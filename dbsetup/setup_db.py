@@ -18,5 +18,5 @@ with conn:
 		body_text TEXT, body_plain TEXT, body_links TEXT, body_images TEXT, FOREIGN KEY(email_address_id) REFERENCES \
 		email_address(email_address_id))")
 	cur.execute("CREATE TABLE email_fact_by_brand(record_id INTEGER PRIMARY KEY, fact_date TEXT, brand_id INT, \
-		email_frequency REAL, most_common_word_in_sub TEXT, per_contain_social_links, sent_bday_email TEXT,\
+		email_frequency REAL, most_common_word_in_sub TEXT, per_contain_social_links REAL, sent_bday_email TEXT,\
 		FOREIGN KEY(brand_id) REFERENCES brand(brand_id))")
