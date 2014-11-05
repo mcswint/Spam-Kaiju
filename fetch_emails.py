@@ -1,7 +1,13 @@
 import imaplib
-import sys
 import email
 import mailbox
+import sys
+sys.path.append('dbsetup')
+from setup_db_SA import Email, Base, Brand
+
+
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 def fetchEmails(username, password):
 	#should we get email via ags?
@@ -27,14 +33,18 @@ def fetchEmails(username, password):
 		# uses email class to parse the email
 		wholeEmail = email.message_from_bytes(theEmail[0][1])
 		#you can access each part like a dict
-		print ('Subject', wholeEmail['Subject'])
+		print ('From', wholeEmail['From'])
 
 
 def fetchFromMbox(filename):
 	mbox = mailbox.mbox(filename)
 	for message in mbox:
-		pass
+		print ('From', message['From'])
 
+def matchEmailstoAddresses(email):
+	pass		
+
+def addEmailsToDB(message):
 
 
 def main(argv):

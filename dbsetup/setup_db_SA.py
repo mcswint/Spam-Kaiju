@@ -14,7 +14,9 @@ class Brand(Base):
     id = Column(Integer, primary_key=True)
     brand_name = Column(String(250), nullable=False)
     brand_website = Column(String(250))
+    brand_website_clean = Column(String(250))
  
+#notusing
 class Email_Address(Base):
 	__tablename__ = 'email_address'
 
