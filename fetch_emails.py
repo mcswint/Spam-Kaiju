@@ -14,7 +14,6 @@ def fetchEmails(username, password):
 	gmailbox = imaplib.IMAP4_SSL('imap.gmail.com')
 
 	try: 
-		#mailbox.login('michellecastillo1989@gmail.com', 'l2thinktank')
 		gmailbox.login(username, password)
 	except imaplib.IMAP4.error:
 		print ("login not successful")
