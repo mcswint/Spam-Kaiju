@@ -13,7 +13,7 @@ def fetchEmails(username, password):
 	#should we get email via ags?
 	gmailbox = imaplib.IMAP4_SSL('imap.gmail.com')
 
-	try: 
+	try:
 		gmailbox.login(username, password)
 	except imaplib.IMAP4.error:
 		print ("login not successful")
@@ -41,10 +41,10 @@ def fetchFromMbox(filename):
 		print ('From', message['From'])
 
 def matchEmailstoAddresses(email):
-	pass		
+	pass
 
 def addEmailsToDB(message):
-
+    pass
 
 def main(argv):
 	if (len(argv) ==1):
@@ -54,7 +54,7 @@ def main(argv):
 	else:
 		print ("Incorrect number of args")
 		sys.exit(0)
-	
+
 
 
 if __name__ =='__main__':
