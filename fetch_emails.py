@@ -4,7 +4,7 @@ import mailbox
 import sys
 sys.path.append('dbsetup')
 from setup_db_SA import Email, Base, Brand
-
+from parse_image_links import parse_links
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -38,13 +38,16 @@ def fetchEmails(username, password):
 def fetchFromMbox(filename):
 	mbox = mailbox.mbox(filename)
 	for message in mbox:
+		addEmailsToDB(message)
 		print ('From', message['From'])
 
 def matchEmailstoAddresses(email):
 	pass
 
 def addEmailsToDB(message):
-    pass
+	parse_links(message)
+	#throw the message to links and images
+	#capture back a list of all links and images
 
 def main(argv):
 	if (len(argv) ==1):
