@@ -5,7 +5,7 @@ import sys
 sys.path.append('dbsetup')
 from setup_db_SA import Email, Base, Brand
 from parseBody import parseBody
-
+from parse_image_links import parse_links
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -36,12 +36,13 @@ def fetchEmails(username, password):
 
 
 def fetchFromMbox(filename):
-    mbox = mailbox.mbox(filename)
-    addEmailsToDB(mbox)
-        #print ('From', message['From'])
+	mbox = mailbox.mbox(filename)
+	for message in mbox:
+		addEmailsToDB(message)
+		print ('From', message['From'])
 
 def matchEmailstoAddresses(email):
-    pass
+	pass
 
 def addEmailsToDB(mbox):
     engine = create_engine('sqlite:///../emails2.db')
@@ -51,6 +52,7 @@ def addEmailsToDB(mbox):
     session = DBSession()
 
     for message in mbox:
+	parse_links(message)
         from_address = message['From']
         to_address = message['To']
         #print('To:', to_address)
