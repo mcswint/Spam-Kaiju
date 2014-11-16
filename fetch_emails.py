@@ -38,7 +38,7 @@ def fetchEmails(username, password):
 def fetchFromMbox(filename):
 	mbox = mailbox.mbox(filename)
 	addEmailsToDB(mbox)
-	print ('From', message['From'])
+	#print ('From', message['From'])
 
 def matchEmailstoAddresses(email):
 	pass
