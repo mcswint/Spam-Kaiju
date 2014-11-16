@@ -44,15 +44,16 @@ def matchEmailstoAddresses(email):
 	pass
 
 def addEmailsToDB(mbox):
-    engine = create_engine('sqlite:///../emails2.db')
+    engine = create_engine('sqlite:///emails2.db')
     Base.metadata.bind = engine
 
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
 
-    parse_links(mbox)
+    #parse_links(mbox)
         
     for message in mbox:
+        body_links = str(parse_links(message))
         from_address = message['From']
         to_address = message['To']
         #print('To:', to_address)
@@ -74,7 +75,7 @@ def addEmailsToDB(mbox):
         #print (body_plain[1:100])
         new_email = Email(sender_address=from_address, to_address=to_address,
                     time_sent=time_sent, message_id=message_id, subject_line=subject_line,
-                    body_plain = body_plain)    
+                    body_plain = body_plain, body_links = body_links)    
 
         session.add(new_email)
     session.commit()
