@@ -41,7 +41,7 @@ class Email(Base):
 	to_address = Column(String(250))
 	gmail_label = Column(String(250))
 	time_sent = Column(String(250))
-	email_message_id = Column(String(250))
+	message_id = Column(String(250))
 	email_size = Column(String(250))
 	subject_line = Column(String(250))
 	body_text = Column(Text)
