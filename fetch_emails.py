@@ -54,6 +54,7 @@ def addEmailsToDB(mbox):
         
     for message in mbox:
         body_links = str(parse_links(message))
+	# make social media parse call here
         from_address = message['From']
         to_address = message['To']
         #print('To:', to_address)
