@@ -37,9 +37,8 @@ def fetchEmails(username, password):
 
 def fetchFromMbox(filename):
 	mbox = mailbox.mbox(filename)
-	for message in mbox:
-		addEmailsToDB(message)
-		print ('From', message['From'])
+	addEmailsToDB(mbox)
+	print ('From', message['From'])
 
 def matchEmailstoAddresses(email):
 	pass
@@ -51,8 +50,9 @@ def addEmailsToDB(mbox):
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
 
+    parse_links(mbox)
+        
     for message in mbox:
-	parse_links(message)
         from_address = message['From']
         to_address = message['To']
         #print('To:', to_address)
