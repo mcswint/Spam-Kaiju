@@ -2,12 +2,21 @@ import imaplib
 import email
 import mailbox
 import sys
+import csv
+
 sys.path.append('dbsetup')
 from setup_db_SA import Email, Base, Brand
-from parseBody import parseBody
-from parse_image_links import parse_links
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy import select
+
+engine = create_engine('sqlite:///emails2.db')
+Base.metadata.bind = engine
+
+DBSession = sessionmaker(bind=engine)
+session = DBSession()
+websites = {}
+emails = []
 
 def fetchEmails(username, password):
 #should we get email via ags?
@@ -36,12 +45,33 @@ def fetchEmails(username, password):
 
 
 def fetchFromMbox(filename):
+	# create a dictionary of websites
+	for clean in session.query(Brand.brand_website_clean):
+		websites[clean[0]] = None
+
 	mbox = mailbox.mbox(filename)
-	addEmailsToDB(mbox)
-	#print ('From', message['From'])
+	for message in mbox:
+		# adds emails from mbox into an email array
+		address = message['From']
+		emails.append(address)
+		# match the emails to the websites
+		matchEmailstoAddresses(address)
+	
+	# pretty prints the matches
+	for website in websites.keys():
+		if websites[website] != None:
+			printstr = website
+			printstr = printstr.rjust(30,' ')
+			print("\t",printstr, "   ", websites[website])
+
 
 def matchEmailstoAddresses(email):
-	pass
+	for website in websites.keys():
+		clean = email.replace(".com","")
+		if website in clean:
+			# cleans up the email address
+			match = email.split('<')
+			websites[website] = match[len(match)-1].strip('>')
 
 def addEmailsToDB(mbox):
     engine = create_engine('sqlite:///emails2.db')
