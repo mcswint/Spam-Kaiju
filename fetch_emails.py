@@ -17,8 +17,10 @@ Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
-websites = {}
-emails = []
+
+brands_dict = {}
+unmatched = []
+
 
 def fetchEmails(username, password):
 #should we get email via ags?
@@ -47,35 +49,54 @@ def fetchEmails(username, password):
 
 
 def fetchFromMbox(filename):
-	# create a dictionary of websites
-	for clean in session.query(Brand.brand_website_clean):
-		websites[clean[0]] = None
+	# create a dictionary of brands
+    cleanwebs = session.query(Brand.id,Brand.brand_website_clean)
 
-	mbox = mailbox.mbox(filename)
-	addEmailsToDB(mbox)
+    # the keys are tuplef of brand ids and names
+    for clean in cleanwebs:
+        brands_dict[(clean[0],clean[1])] = None
 
-	for message in mbox:
-		# adds emails from mbox into an email array
-		address = message['From']
-		emails.append(address)
-		# match the emails to the websites
-		matchEmailstoAddresses(address)
-	
-	# pretty prints the matches
-	for website in websites.keys():
-		if websites[website] != None:
-			printstr = website
-			printstr = printstr.rjust(30,' ')
-			print("\t",printstr, "   ", websites[website])
+    mbox = mailbox.mbox(filename)
+    addEmailsToDB(mbox)
 
+    for message in mbox:
+        address = message['From']
+        matchEmailstoAddresses(address)
+    
+    # pretty prints the brands_dict
+    for brand_entry in brands_dict.keys():
+        if brands_dict[brand_entry] != None:
+            printstr = ' '.join(map(str,brand_entry))
+            printstr = printstr.rjust(30,' ')
+            print("\t",printstr, "   ", brands_dict[brand_entry])
 
 def matchEmailstoAddresses(email):
-	for website in websites.keys():
-		clean = email.replace(".com","")
-		if website in clean:
-			# cleans up the email address
-			match = email.split('<')
-			websites[website] = match[len(match)-1].strip('>')
+    matched = False
+    matches = []
+
+    # finds match of the brand in the email, can have several
+    for brand_entry in brands_dict.keys():
+        clean = email.replace(".com","")
+        if brand_entry[1] in clean:
+            matches.append(brand_entry)
+            matched = True;
+
+    # cleans up the email address
+    email = email.split('<')
+    email = email[len(email)-1].strip('>')
+
+    # if there are matches match to the longest brand name
+    if matched:
+        longest = matches[0]
+        for match in matches:
+            if (len(match[1]) > len(longest[1])):
+                longest = match
+
+        brands_dict[longest] = email
+
+    # else add to list of unmatched brands
+    else:
+        unmatched.append(email)
 
 
 def addEmailsToDB(mbox):
@@ -121,7 +142,6 @@ def main(argv):
     else:
         print ("Incorrect number of args")
         sys.exit(0)
-
 
 
 if __name__ =='__main__':
