@@ -15,19 +15,29 @@ with open('brands_and_websites.csv') as datafile:
 	data = csv.reader(datafile, delimiter=',')
 	for row in data:
 		website = row[1]
-		cleanWeb = ""
+		cleanWeb = None
 		count = website.count(".")
 		pieces = website.split(".")
 		if (count == 0):
 			print (website)
 			continue
-		if (count == 1):
+		#if "www" not in pieces[0] and "http" not in pieces[0]:
 			#print(pieces[0])
-			cleanWeb = pieces[0]
+		#	cleanWeb = pieces[0]
 		else:
-			#print(pieces[1])	
-			cleanWeb = pieces[1]
+			for idx, p in enumerate(pieces):
+					if "com" in p or "net" == p or "co" == p or "org" == p:
+						pre = pieces[idx-1]
+						if "www" not in pre and "http" not in pre:
+							cleanWeb= pre
+			if cleanWeb == None:
+				if "www" not in pieces[0] and "http" not in pieces[0]:
+					cleanWeb = pieces[0]
+				else:	
+					cleanWeb = pieces[1]
 
+		#print (cleanWeb)
+		#input("help")
 		new_brand = Brand(brand_name=row[0], brand_website=website, brand_website_clean = cleanWeb)	
 		session.add(new_brand)
 	session.commit()
