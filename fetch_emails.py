@@ -6,6 +6,8 @@ import csv
 
 sys.path.append('dbsetup')
 from setup_db_SA import Email, Base, Brand
+from parseBody import parseBody
+from parse_image_links import parse_links
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import select
@@ -50,6 +52,8 @@ def fetchFromMbox(filename):
 		websites[clean[0]] = None
 
 	mbox = mailbox.mbox(filename)
+	addEmailsToDB(mbox)
+
 	for message in mbox:
 		# adds emails from mbox into an email array
 		address = message['From']
@@ -73,18 +77,16 @@ def matchEmailstoAddresses(email):
 			match = email.split('<')
 			websites[website] = match[len(match)-1].strip('>')
 
+
 def addEmailsToDB(mbox):
     engine = create_engine('sqlite:///emails2.db')
     Base.metadata.bind = engine
-
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
-
     #parse_links(mbox)
-        
     for message in mbox:
         body_links = str(parse_links(message))
-	# make social media parse call here
+        # make social media parse call here
         from_address = message['From']
         to_address = message['To']
         #print('To:', to_address)
@@ -101,15 +103,15 @@ def addEmailsToDB(mbox):
         #encode_sub = subject_line.encode('utf-8')
         #decode_subject = subject_line.decode('utf-8', 'ignore')
         #print('decoded: ', decode_subject)
-        body_parser = parseBody() 
-        body_plain = body_parser.getBody(message) 
+        body_parser = parseBody()
+        body_plain = body_parser.getBody(message)
         #print (body_plain[1:100])
         new_email = Email(sender_address=from_address, to_address=to_address,
                     time_sent=time_sent, message_id=message_id, subject_line=subject_line,
-                    body_plain = body_plain, body_links = body_links)    
-
+                    body_plain = body_plain, body_links = body_links)
         session.add(new_email)
     session.commit()
+
 
 def main(argv):
     if (len(argv) ==1):
