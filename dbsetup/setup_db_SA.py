@@ -47,6 +47,7 @@ class Email(Base):
 	body_text = Column(Text)
 	body_plain = Column(Text)
 	body_links = Column(Text)
+	social_links = Column(Text)
 	body_images = Column(Text)
 
 class Email_Fact_By_Brand(Base):

@@ -85,7 +85,6 @@ def addEmailsToDB(mbox):
     session = DBSession()
     #parse_links(mbox)
     for message in mbox:
-        body_links = str(parse_links(message))
         # make social media parse call here
         from_address = message['From']
         to_address = message['To']
@@ -105,10 +104,11 @@ def addEmailsToDB(mbox):
         #print('decoded: ', decode_subject)
         body_parser = parseBody()
         body_plain = body_parser.getBody(message)
-        #print (body_plain[1:100])
+        all_links, social_links = parse_links(body_plain)
+        #print (body_plain)
         new_email = Email(sender_address=from_address, to_address=to_address,
                     time_sent=time_sent, message_id=message_id, subject_line=subject_line,
-                    body_plain = body_plain, body_links = body_links)
+                    body_plain = body_plain, body_links = str(all_links), social_links = str(social_links))
         session.add(new_email)
     session.commit()
 
