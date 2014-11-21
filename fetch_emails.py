@@ -105,9 +105,12 @@ def addAddressesToDb(address):
 
 
 def addEmailsToDB(mbox):
-
+    
+    message_count = 0
     for message in mbox:
         # make social media parse call here
+        email_size = str(sys.getsizeof(mbox.get_bytes(message_count)))
+        message_count += 1
         from_address = message['From']
         to_address = message['To']
         #print('To:', to_address)
