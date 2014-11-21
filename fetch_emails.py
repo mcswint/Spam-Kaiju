@@ -118,9 +118,12 @@ def getAddress(address):
 
 
 def addEmailsToDB(mbox):
-
+    
+    message_count = 0
     for message in mbox:
         # make social media parse call here
+        email_size = str(sys.getsizeof(mbox.get_bytes(message_count)))
+        message_count += 1
         from_address = message['From']
         from_address = from_address.split('<')
         from_address = from_address[len(from_address)-1].strip('>')
