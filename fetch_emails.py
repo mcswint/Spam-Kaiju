@@ -5,7 +5,7 @@ import sys
 import csv
 
 sys.path.append('dbsetup')
-from setup_db_SA import Email, Base, Brand
+from setup_db_SA import Email, Base, Brand, Email_Address
 from parseBody import parseBody
 from parse_image_links import parse_links
 from sqlalchemy import create_engine
@@ -20,6 +20,7 @@ session = DBSession()
 
 brands_dict = {}
 unmatched = []
+unmatchedIndex=0
 
 
 def fetchEmails(username, password):
@@ -51,7 +52,9 @@ def fetchEmails(username, password):
 def fetchFromMbox(filename):
 	# create a dictionary of brands
     cleanwebs = session.query(Brand.id,Brand.brand_website_clean)
-
+    unind = session.query(Brand.id).filter(Brand.brand_name == "UNMATCHED")
+    unmatchedIndex = unind[0]
+    unmatchedIndex = unmatchedIndex[0]
     # the keys are tuplef of brand ids and names
     for clean in cleanwebs:
         brands_dict[(clean[0],clean[1])] = None
@@ -68,7 +71,7 @@ def fetchFromMbox(filename):
         if brands_dict[brand_entry] != None:
             printstr = ' '.join(map(str,brand_entry))
             printstr = printstr.rjust(30,' ')
-            print("\t",printstr, "   ", brands_dict[brand_entry])
+            #print("\t",printstr, "   ", brands_dict[brand_entry])
 
 def matchEmailstoAddresses(email):
     matched = False
@@ -98,10 +101,20 @@ def matchEmailstoAddresses(email):
     # else add to list of unmatched brands
     else:
         unmatched.append(email)
-        return 1 ##UNMATCHED in the db is 1
+        return unmatchedIndex ##UNMATCHED in the db is 1
 
-def addAddressesToDb(address):
-    pass
+def getAddress(address):
+    try:
+        eid = session.query(Email_Address.id).filter(Email_Address.email_address == address)
+        eid = eid[0]
+        return eid[0]
+    except IndexError:
+        brand_id = matchEmailstoAddresses(address)
+        new_emailAddr = Email_Address(email_address=address, brand_id= brand_id)
+        session.add(new_emailAddr)
+        session.commit()
+        getAddress(address)
+
 
 
 def addEmailsToDB(mbox):
@@ -109,6 +122,10 @@ def addEmailsToDB(mbox):
     for message in mbox:
         # make social media parse call here
         from_address = message['From']
+        from_address = from_address.split('<')
+        from_address = from_address[len(from_address)-1].strip('>')
+        address_id = getAddress(from_address)
+        #print(address_id)
         to_address = message['To']
         #print('To:', to_address)
         gmail_label = message['X-Gmail-Labels']
@@ -128,7 +145,7 @@ def addEmailsToDB(mbox):
         body_plain = body_parser.getBody(message)
         all_links, social_links = parse_links(body_plain)
         #print (body_plain)
-        new_email = Email(sender_address=from_address, to_address=to_address,
+        new_email = Email(sender_address=from_address, address_id=address_id, to_address=to_address,
                     time_sent=time_sent, message_id=message_id, subject_line=subject_line,
                     body_plain = body_plain, body_links = str(all_links), social_links = str(social_links))
         session.add(new_email)
