@@ -12,6 +12,9 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 with open('brands_and_websites.csv') as datafile:
+	new_brand = Brand(brand_name="UNMATCHED", brand_website="UNMATCHED", brand_website_clean = "UNMATCHED")	
+	session.add(new_brand)
+
 	data = csv.reader(datafile, delimiter=',')
 	for row in data:
 		website = row[1]
