@@ -39,7 +39,7 @@ class tranformer():
                 addresses.append(currentEmailAddress)
                 input("Enter....")
 
-            for address in emailAddresses:
+            for address in addresses:
                 for entry in session.query(Email).filter_by(sender_address = 'address')
                     emails.append(entry)
             
