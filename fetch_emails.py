@@ -93,18 +93,19 @@ def matchEmailstoAddresses(email):
                 longest = match
 
         brands_dict[longest] = email
+        return longest[0]
 
     # else add to list of unmatched brands
     else:
         unmatched.append(email)
+        return 1 ##UNMATCHED in the db is 1
+
+def addAddressesToDb(address):
+    pass
 
 
 def addEmailsToDB(mbox):
-    engine = create_engine('sqlite:///emails2.db')
-    Base.metadata.bind = engine
-    DBSession = sessionmaker(bind=engine)
-    session = DBSession()
-    #parse_links(mbox)
+
     for message in mbox:
         # make social media parse call here
         from_address = message['From']
