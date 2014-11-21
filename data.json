@@ -1,0 +1,83 @@
+{
+	"name": "flare",
+	"children": [
+	{
+		"name": "retail",
+		"children": [
+			{"name": "JCPenney", "size": 1082},
+			{"name": "Marshalls", "size": 1336},
+			{"name": "TJMaxx", "size": 319},
+			{"name": "Bed, Bath & Beyond", "size": 10498},
+			{"name": "Rei", "size": 2822},
+			{"name": "Target", "size": 9983},
+			{"name": "Kohls", "size": 2213},
+			{"name": "Burlington Coat Factory", "size": 1681}
+		]
+	},
+	{
+		"name": "beverages",
+		"children": [
+		{
+			"name": "softdrinks",
+			"children": [
+				{"name": "Coca-Cola", "size": 2105},
+				{"name": "Pepsi", "size": 1316},
+				{"name": "Snapple", "size": 3151},
+				{"name": "Aquafina", "size": 1756},
+				{"name": "Poland Spring", "size": 1821}
+			]
+		},
+		{
+			"name": "alcohol",
+			"children": [
+				{"name": "Budweiser", "size": 3770},
+				{"name": "Samuel Adams", "size": 2435},
+				{"name": "Tanqueray", "size": 4839},
+				{"name": "Hendricks", "size": 4268},
+				{"name": "Stella Artois", "size": 5833}
+			]
+		}
+		]
+	},
+	{
+		"name": "watches_jewelry",
+		"children": [
+			{"name": "Seiko", "size": 1082},
+			{"name": "Tissot", "size": 1336},
+			{"name": "Rolex", "size": 319},
+			{"name": "Bulgari", "size": 10498},
+			{"name": "Casio", "size": 2822},
+			{"name": "Fossil", "size": 9983},
+			{"name": "Garmin", "size": 2213},
+			{"name": "Swatch", "size": 1681},
+			{"name": "Tiffanys", "size": 1082},
+			{"name": "Tissot", "size": 1336},
+			{"name": "Rolex", "size": 319},
+			{"name": "Bulgari", "size": 10498},
+			{"name": "Casio", "size": 2822},
+			{"name": "Fossil", "size": 9983},
+			{"name": "Garmin", "size": 2213},
+			{"name": "Swatch", "size": 1681}
+		]
+	},
+	{
+		"name": "electronics",
+		"children": [
+			{"name": "Samsung", "size": 1082},
+			{"name": "Apple", "size": 1336},
+			{"name": "Sony", "size": 319},
+			{"name": "Microsoft", "size": 10498},
+			{"name": "Dell", "size": 2822},
+			{"name": "IBM", "size": 9983},
+			{"name": "Intel", "size": 2213},
+			{"name": "Seagate", "size": 1681}
+		]
+	},
+	{
+		"name": "restaurants",
+		"children": [
+			{"name": "Chipotle", "size": 1082}
+		]
+	}
+	]
+}
