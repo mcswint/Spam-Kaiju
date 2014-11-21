@@ -16,14 +16,14 @@ class Brand(Base):
     brand_website = Column(String(250))
     brand_website_clean = Column(String(250))
  
-#notusing
 class Email_Address(Base):
 	__tablename__ = 'email_address'
 
 	id = Column(Integer, primary_key=True)
 	email_address = Column(String(250), nullable = False)
+	brand_id = Column(Integer, ForeignKey('brand.id'))
 
-
+#not using
 class Brand_To_Email_Address(Base):
     __tablename__ = 'brand_to_email_address'
     # Here we define columns for the table address.
