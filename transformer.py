@@ -19,44 +19,33 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
-brands_dict = {}
-unmatched = []
-tupDict = {}
-
-
 class tranformer():
     
     def matchBrandsToEmails(self):
         print("start")
         brands = session.query(Brand)
         print(type(brands))
+        tupDict = {}
 
-        brandsToEmails = []
         for brand in brands:
             brandId = brand.id
             addresses = []
             emails = []
-            #print (brandId)
-            #input ("bla")
 
             for currentEmailAddress in session.query(Email_Address.id).filter(Email_Address.brand_id == brandId):
                 addresses.append(currentEmailAddress)
-                #input("Enter....")
 
             for address in addresses:
                 for entry in session.query(Email).filter(Email.address_id == address.id):
                     emails.append(entry)
             
             addressToEmailTuple = (addresses, emails)
-            brandsToEmails.append((brand, addressToEmailTuple))
             tupDict[brand] = addressToEmailTuple
 
-        # a list of tuples ("brand id", (list of addressess associated with brand, all emails from all addresses associated with brand)) 
-        #print("hello")
-        #print (brandsToEmails)
-        return brandsToEmails
+        # a Dictionary of brands ("brand name" :(list of addressess associated with brand, all emails from all addresses associated with brand)) 
+        return tupDict;
 
-    def countEmailsbyBrand(self):
+    def countEmailsbyBrand(self, tupDict):
         emailString = ""
 
         for key, val in tupDict.items():
@@ -78,8 +67,8 @@ def writeToCsv():
 
 def main():
     t = tranformer()
-    t.matchBrandsToEmails()
-    t.countEmailsbyBrand()
+    brandDict = t.matchBrandsToEmails()
+    t.countEmailsbyBrand(brandDict)
 
     #t.writeToCsv
 
