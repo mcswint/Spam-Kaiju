@@ -15,6 +15,7 @@ class Brand(Base):
     brand_name = Column(String(250), nullable=False)
     brand_website = Column(String(250))
     brand_website_clean = Column(String(250))
+    category = Column(String(250))
  
 class Email_Address(Base):
 	__tablename__ = 'email_address'
@@ -30,7 +31,7 @@ class Brand_To_Email_Address(Base):
     # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
     brand_id = Column(Integer, ForeignKey('brand.id'))
-    address_id = Column(Integer, ForeignKey('email_address.id'))
+    address_id = Column(Integer, ForeignKey('email_address.id'))    
 
 class Email(Base):
 	__tablename__ = 'email'
