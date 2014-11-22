@@ -11,8 +11,8 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
-with open('brands_and_websites.csv') as datafile:
-	new_brand = Brand(brand_name="UNMATCHED", brand_website="UNMATCHED", brand_website_clean = "UNMATCHED")	
+with open('brands_websites_cat.csv') as datafile:
+	new_brand = Brand(brand_name="UNMATCHED", brand_website="UNMATCHED", brand_website_clean = "UNMATCHED", category="None") 
 	session.add(new_brand)
 
 	data = csv.reader(datafile, delimiter=',')
@@ -22,7 +22,7 @@ with open('brands_and_websites.csv') as datafile:
 		count = website.count(".")
 		pieces = website.split(".")
 		if (count == 0):
-			print (website)
+			#print (website)
 			continue
 		#if "www" not in pieces[0] and "http" not in pieces[0]:
 			#print(pieces[0])
@@ -41,7 +41,7 @@ with open('brands_and_websites.csv') as datafile:
 
 		#print (cleanWeb)
 		#input("help")
-		new_brand = Brand(brand_name=row[0], brand_website=website, brand_website_clean = cleanWeb)	
+		new_brand = Brand(brand_name=row[0], brand_website=website, brand_website_clean = cleanWeb, category=row[2])	
 		session.add(new_brand)
 	session.commit()
 
