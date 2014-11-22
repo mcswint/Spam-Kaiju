@@ -24,7 +24,7 @@ class tranformer():
     def matchBrandsToEmails(self):
         print("start")
         brands = session.query(Brand)
-        print(type(brands))
+        #print(type(brands))
         tupDict = {}
 
         for brand in brands:
@@ -47,18 +47,26 @@ class tranformer():
 
     def countEmailsbyBrand(self, tupDict):
         emailString = ""
+        topDict = {}
+        categoryDict = {}
+        brandDict = {}
 
         for key, val in tupDict.items():
             numEmails = len(val[1])
             if numEmails != 0:
-                emailString += json.dumps({'name': key.brand_name, 'size': numEmails},
-                indent=4, separators=(',', ': '))
-                #print (key.brand_name)
-                #print ("num of emails: ", numEmails)
-        jsonString = json.dumps({'name': 'flare', 'children': [emailString]}, indent=4,
-                        separators=(',', ': '))
-        print(jsonString)
-     
+                brandDict[key.brand_name] = numEmails
+        
+        topDict["name"] = brandDict
+        print(brandDict)
+        input("Enter...")
+
+        emailString += json.dumps(topDict, indent=4, separators=(',', ': '))
+        print(emailString)
+        #print (key.brand_name)
+        #print ("num of emails: ", numEmails)
+        #jsonString = json.dumps({'name': 'flare', 'children': [emailString]}, indent=4,
+        #                separators=(',', ': '))
+        #print(jsonString)
 
 def writeToCsv():
     #with csv.writer(open('test.csv', 'w', newLine='') as datafile:
