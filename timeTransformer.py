@@ -97,10 +97,10 @@ def writeToCsv():
 
 def main():
 
-    startTime = raw_input("Please enter a start time (Format : 31 Dec 2013 21:30:00)\n")
+    startTime = input("Please enter a start time (Format : 31 Dec 2013 21:30:00)\n")
     start_time_object = time.strptime(startTime, '%d %b %Y %X')
 
-    endTime = raw_input("Please enter an end time (Format : 31 Dec 2013 21:30:00)\n")
+    endTime = input("Please enter an end time (Format : 31 Dec 2013 21:30:00)\n")
     end_time_object = time.strptime(endTime, '%d %b %Y %X')
 
     t = timeTransformer()
