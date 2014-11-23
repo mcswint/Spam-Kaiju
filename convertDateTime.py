@@ -23,8 +23,8 @@ session = DBSession()
 
 def stringToDateTimeObject(date_string):
     if (date_string[24] == " "): # Fri, 8 Aug 2014 12:33:52 -0000
-        date_time_object = time.strptime(date_string[5:24], '%d %b %Y %X')
+        date_time_object = date_string[5:24]
     elif (date_string[0].isdigit()):  # 8 Aug 2014 12:33:52 -0000
-        date_time_object = time.strptime(date_string[:19], '%d %b %Y %X')
+        date_time_object = date_string[:19]
     else: # Fri, 22 Aug 2014 12:33:52 -0000
-        date_time_object = time.strptime(date_string[5:25], '%d %b %Y %X')
+        date_time_object = date_string[5:25]

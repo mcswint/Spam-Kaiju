@@ -1,0 +1,112 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:500,600,700,800,900);
+
+@font-face {
+    font-family: Didot LT Std Italic;
+    src: url(DidotLTStdItalic.ttf);
+    color:#111;
+}
+
+body {
+	font: 11pt helvetica, sans-serif;
+	margin:0;
+}
+a {
+	color:#000;
+	font-weight: bold;
+	text-decoration: none;
+}
+a:hover {
+	color:rgb(160,205,83);
+}
+a.nav {
+	margin-left: 15pt;
+	padding: 10px;
+}
+a.nav:hover {
+	background-color: #fff;	
+}
+h1 {
+	font-size:60pt;
+	font-family: Raleway;
+	font-weight: 600;
+	color:#fff;
+	letter-spacing: -2pt;
+	background-color: #000;
+	display: inline;
+	padding:0pt 20pt 0 20pt;
+}
+#second {
+	color:rgb(160,205,83);
+	padding-left:0;
+}
+h2 {
+	font-size:30pt;
+	font-family: Didot LT Std Italic;
+	font-weight: 300;
+	margin:0;
+	letter-spacing: 1pt;
+}
+h3 {
+	font-family: Didot LT Std Italic;
+	font-size:20pt;
+	font-weight: 300;
+	margin:10pt 0 10pt 0;
+	letter-spacing: 1pt;
+}
+div {
+	border:0px solid red;
+	margin-right: auto;
+    margin-left: auto;
+	padding:15pt 20pt 15pt 20pt;
+	overflow:hidden;
+}
+#content {
+	line-height: 16pt;
+	width:780px;
+	z-index:2;
+	background-color: #fff;
+	position: relative;
+	/*padding:15pt 19vw 15pt 19vw;*/
+}
+#headcontainer {
+	background-color:rgb(160,205,83);
+	z-index:1;
+	position: relative;
+	width:100%;
+	padding:0;
+}
+#spamkaiju {
+	width:800px;
+	padding-top:0;
+	padding-bottom: 0;
+}
+.hasshadow {
+	box-shadow: 0px 0px 100px #000;
+}
+#otachi {
+	background: url('otachi.jpg');
+	background-attachment: fixed;
+	height:250pt;
+	background-size: cover;
+
+}
+.graph {
+	text-align: center;
+	background-color: #eee;
+}
+.graph:nth-child(2n) {
+	background-color: #fff;
+}
+text {
+	font: 10px sans-serif;
+}
+path.slice{
+	stroke-width:2px;
+}
+
+polyline{
+	opacity: .3;
+	stroke: black;
+	stroke-width: 2px;
+	fill: none;
+}

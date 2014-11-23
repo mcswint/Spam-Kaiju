@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+<body>
+	<!-- header -->
+	<div id="headcontainer" class="hasshadow">
+		<div id="spamkaiju">
+			<h1>Spam</h1><h1 id="second">Kaiju</h1>
+			<a href="index.html" class="nav">Home</a>
+			<a href="results.html" class="nav">Results</a>
+			<a href="https://github.com/mcswint/Spam-Kaiju/" class="nav" target="_blank">Github Repo</a>
+		</div>
+	</div>
+	<div id="otachi">
+	</div>
+	<!-- end header -->
+
+	<div id="content">
+		<h3>About</h3>
+		<p>For our final project in COMSW3101-1 Python Fall 2014, we made an email scraper to analyze emails that brands send their customers who sign up for their mailing list. This data can be used to compare what types of advertisements brands are sending to their potential customers or analyze the spam that is coming to your mailbox.</p>
+		<p>The purpose of this project was to exercise our comprehension of the material learned in Python by utilizing those concepts in real-life applications such as data mining. In our project, we had two main processes: the first step was to extract data given a database, and the second was determining what to do with that data. In our case, we chose to display different aspects and trends of the data collected.</p>
+
+		<br/>
+
+		<h3>In-Depth</h3>
+		<b>fetch_emails.py</b><br/>
+		Turn email messages from gmail-type format and stores them into a database format so that we are able to manipulate its data easily and conveniently.
+			<ul>
+				<li><i>addEmailsToDB</i> - Given an email string, parses the email and creates SQL columns for the properties of the email. Then creates a new entry of the email in the database</li> 
+		        <li><i>matchEmailstoAddresses</i> - Given an email address string, finds and matches it to an existing entry database dictionary. If not matched, adds the email to a list of unmatched emails. Returns the brand id of the match or if not matched returns the index in the list of unmatched emails.</li> 
+
+		    </ul>
+		<b>parse_image_links.py</b><br/>
+			<ul>
+		        <li><i>parse_links</i> - Given a message string, uses regex to extract all links in message</li> 
+		        <li><i>def parse_social_media</i> - Given a list of urls. Returns a sanitized list of only social media links</li>
+		    </ul>
+
+	    <b>timeTransformer.py</b><br/>
+	    User defines start and end date. Result is a JSON feed of brands and number of emails sent during the specified time
+		    <ul>
+		        <li><i>timeToDateTimeObject</i> - Given a date/time string, converts to a native python date/Time object
+			        
+		        <li><u>class timeTransformer</u></li>
+		        <ul>
+			        <li><i>getAllEmailDatesInRange</i> - Queries database for all emails and extracts time sent. Compares time sent to user defined time and builds list of all emails sent during time specified.</li>
+			        <li><i>matchBrandsToEmails</i> - Used to pair brand name with email addresses. Queries database and builds a list of all associated emails and brands. </li>
+			        <li><i>buildJSON</i> - Provided a dictionary of brands and number of emails sent constructs a useable JSON representation of data</li>
+		        </ul>
+		    </ul>
+
+	    <b>transformer.py</b>
+	        <ul>
+		        <li>Queries the database and creates a useable JSON stream of all associated Brands, emails, categories, and number of emails sent</li>
+		    </ul>
+
+		<br/>
+
+		<h3>Sources and Credits</h3>
+		<p>This project is built using Python v3 among other outside libraries. Database management was made possible by <a href="http://www.sqlalchemy.org/">SQLAlchemy</a>. Data displayed via <a href="http://d3js.org/">D3.js</a> and template used is by <a href="http://bl.ocks.org/mbostock/">mbostock</a>. Everything else &copy; Troy Barrett, Mandy Swinton, and Jean Mariano.</p>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,217 @@
+{
+    "children": [
+        {
+            "name": "OfficeMax",
+            "size": 52
+        },
+        {
+            "name": " eliminate (erroneous addition)",
+            "size": 62
+        },
+        {
+            "name": "Cabela's",
+            "size": 2
+        },
+        {
+            "name": "Trader Joe's",
+            "size": 8
+        },
+        {
+            "name": "Ace Hardware",
+            "size": 16
+        },
+        {
+            "name": "Sam's Club",
+            "size": 52
+        },
+        {
+            "name": "RadioShack",
+            "size": 20
+        },
+        {
+            "name": "Bed Bath & Beyond",
+            "size": 80
+        },
+        {
+            "name": "Hobby Lobby",
+            "size": 60
+        },
+        {
+            "name": "Dicks Sporting Goods",
+            "size": 8
+        },
+        {
+            "name": "Marshall's",
+            "size": 14
+        },
+        {
+            "name": "Michaels Stores",
+            "size": 2
+        },
+        {
+            "name": "BJ's Wholesale Club",
+            "size": 92
+        },
+        {
+            "name": "Whole Foods",
+            "size": 38
+        },
+        {
+            "name": "Target",
+            "size": 50
+        },
+        {
+            "name": "Walgreens",
+            "size": 62
+        },
+        {
+            "name": "Macy's",
+            "size": 46
+        },
+        {
+            "name": "Costco",
+            "size": 54
+        },
+        {
+            "name": "Family Dollar",
+            "size": 26
+        },
+        {
+            "name": "Office Depot",
+            "size": 62
+        },
+        {
+            "name": "Fry's Electronics",
+            "size": 64
+        },
+        {
+            "name": "HomeGoods",
+            "size": 10
+        },
+        {
+            "name": "Famous Footwear",
+            "size": 12
+        },
+        {
+            "name": "Container Store",
+            "size": 82
+        },
+        {
+            "name": "Dillard's",
+            "size": 28
+        },
+        {
+            "name": "Walmart",
+            "size": 82
+        },
+        {
+            "name": "buybuy BABY",
+            "size": 22
+        },
+        {
+            "name": "Ross",
+            "size": 10
+        },
+        {
+            "name": "Meijer",
+            "size": 44
+        },
+        {
+            "name": "Jo-Ann Stores",
+            "size": 68
+        },
+        {
+            "name": "True Value",
+            "size": 10
+        },
+        {
+            "name": "TJ Maxx",
+            "size": 56
+        },
+        {
+            "name": "hhgregg",
+            "size": 82
+        },
+        {
+            "name": "Academy Sports + Outdoors",
+            "size": 124
+        },
+        {
+            "name": "Dollar Tree",
+            "size": 62
+        },
+        {
+            "name": "Staples",
+            "size": 82
+        },
+        {
+            "name": "Lowe's",
+            "size": 46
+        },
+        {
+            "name": "Sports Authority",
+            "size": 56
+        },
+        {
+            "name": "Burlington Coat Factory",
+            "size": 20
+        },
+        {
+            "name": "Shopko",
+            "size": 66
+        },
+        {
+            "name": "Home Depot",
+            "size": 42
+        },
+        {
+            "name": "JCPenney",
+            "size": 54
+        },
+        {
+            "name": "Publix",
+            "size": 40
+        },
+        {
+            "name": "Petco Animal Supplies",
+            "size": 114
+        },
+        {
+            "name": "Kroger",
+            "size": 8
+        },
+        {
+            "name": "HEB",
+            "size": 4
+        },
+        {
+            "name": "Kohl's",
+            "size": 132
+        },
+        {
+            "name": "Dollar General",
+            "size": 86
+        },
+        {
+            "name": "Toys'r'us",
+            "size": 2
+        },
+        {
+            "name": "REI",
+            "size": 32
+        },
+        {
+            "name": "Belk",
+            "size": 68
+        },
+        {
+            "name": "Pier 1 Imports",
+            "size": 84
+        },
+        {
+            "name": "Cost Plus World Market",
+            "size": 70
+        }
+    ],
+    "name": "flare"
+}
