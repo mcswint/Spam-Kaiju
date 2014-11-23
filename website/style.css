@@ -40,19 +40,20 @@ h1 {
 	padding-left:0;
 }
 h2 {
-	font-size:30pt;
+	font-size:25pt;
 	font-family: Didot LT Std Italic;
 	font-weight: 300;
 	margin:0;
+	margin:10pt 0 10pt 0;
 	letter-spacing: 1pt;
 }
-h3 {
+/*h3 {
 	font-family: Didot LT Std Italic;
 	font-size:20pt;
 	font-weight: 300;
 	margin:10pt 0 10pt 0;
 	letter-spacing: 1pt;
-}
+}*/
 div {
 	border:0px solid red;
 	margin-right: auto;
