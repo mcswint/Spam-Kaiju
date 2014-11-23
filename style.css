@@ -15,6 +15,9 @@ a {
 	font-weight: bold;
 	text-decoration: none;
 }
+a:hover {
+	color:rgb(160,205,83);
+}
 a.nav {
 	margin-left: 15pt;
 	padding: 10px;
@@ -73,12 +76,9 @@ div {
 	padding:0;
 }
 #spamkaiju {
-	/*text-align: center;*/
-	/*width:100%;*/
 	width:800px;
 	padding-top:0;
 	padding-bottom: 0;
-	
 }
 .hasshadow {
 	box-shadow: 0px 0px 100px #000;
@@ -86,7 +86,6 @@ div {
 #otachi {
 	background: url('otachi.jpg');
 	background-attachment: fixed;
-	/*height:60vh;*/
 	height:250pt;
 	background-size: cover;
 

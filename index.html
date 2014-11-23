@@ -26,7 +26,36 @@
 		<br/>
 
 		<h3>In-Depth</h3>
-		<p>List of Shortcomings here</p>
+		<b>fetch_emails.py</b><br/>
+		Turn email messages from gmail-type format and stores them into a database format so that we are able to manipulate its data easily and conveniently.
+			<ul>
+				<li><i>addEmailsToDB</i> - Given an email string, parses the email and creates SQL columns for the properties of the email. Then creates a new entry of the email in the database</li> 
+		        <li><i>matchEmailstoAddresses</i> - Given an email address string, finds and matches it to an existing entry database dictionary. If not matched, adds the email to a list of unmatched emails. Returns the brand id of the match or if not matched returns the index in the list of unmatched emails.</li> 
+
+		    </ul>
+		<b>parse_image_links.py</b><br/>
+			<ul>
+		        <li><i>parse_links</i> - Given a message string, uses regex to extract all links in message</li> 
+		        <li><i>def parse_social_media</i> - Given a list of urls. Returns a sanitized list of only social media links</li>
+		    </ul>
+
+	    <b>timeTransformer.py</b><br/>
+	    User defines start and end date. Result is a JSON feed of brands and number of emails sent during the specified time
+		    <ul>
+		        <li><i>timeToDateTimeObject</i> - Given a date/time string, converts to a native python date/Time object
+			        
+		        <li><u>class timeTransformer</u></li>
+		        <ul>
+			        <li><i>getAllEmailDatesInRange</i> - Queries database for all emails and extracts time sent. Compares time sent to user defined time and builds list of all emails sent during time specified.</li>
+			        <li><i>matchBrandsToEmails</i> - Used to pair brand name with email addresses. Queries database and builds a list of all associated emails and brands. </li>
+			        <li><i>buildJSON</i> - Provided a dictionary of brands and number of emails sent constructs a useable JSON representation of data</li>
+		        </ul>
+		    </ul>
+
+	    <b>transformer.py</b>
+	        <ul>
+		        <li>Queries the database and creates a useable JSON stream of all associated Brands, emails, categories, and number of emails sent</li>
+		    </ul>
 
 		<br/>
 
