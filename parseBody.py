@@ -41,7 +41,8 @@ class parseBody():
         if (body != None):
             body = self.decode(msg, body)
             parser = MyHTMLParser()
-            parser.feed(body)
+            print (type(body))
+            parser.feed(str(body))
             parsed = parser.getDatastring()
             return parsed
         else:

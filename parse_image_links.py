@@ -12,7 +12,7 @@ def parse_links(message):
 def parse_social_media(list):
     #find any link and print it out
     social_media = []
-    links_to_check = ["facebook", "twitter"]
+    links_to_check = ["facebook", "twitter","pinterest", "youtube", "instagram"]
     for link_string in list:
         if any(substring in link_string for substring in links_to_check):
             social_media.append(link_string)
