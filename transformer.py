@@ -22,7 +22,6 @@ session = DBSession()
 class tranformer():
     
     def matchBrandsToEmails(self):
-        print("start")
         brands = session.query(Brand)
         #print(type(brands))
         tupDict = {}
@@ -44,6 +43,67 @@ class tranformer():
 
         # a Dictionary of brands ("brand name" :(list of addressess associated with brand, all emails from all addresses associated with brand)) 
         return tupDict;
+
+    def emailsSocial(self, tupDict):
+
+        allCat = {}
+   
+        for key, val in tupDict.items():
+            if len(val[1]) > 0:
+     
+                if key.category in allCat:
+                    tempList = allCat[key.category]
+                    allCat[key.category] = tempList + val[1]
+                else:
+                    allCat[key.category] = val[1]
+
+
+        #print(allCat)
+        onelist = ["category"]
+        social = {"facebook" : [], "twitter":[], "pinterest":[], "youtube":[], "instagram":[]}
+        for key, val in allCat.items():
+            onelist.append(key)
+            totalEmails = 0
+            facebook = 0
+            twitter = 0
+            pinterest = 0
+            youtube = 0
+            instagram = 0
+            for v in val:
+                totalEmails += 1
+               # print(v.social_links)
+                socailLinks = v.social_links.split(",")
+                #input("dfds")
+                for link in socailLinks:
+                    if "facebook" in link:
+                        facebook += 1
+                    elif "twitter" in link:
+                        twitter += 1
+                    elif "pinterest" in link:
+                        pinterest += 1
+                    elif "youtube" in link:
+                        youtube += 1
+                    elif "instagram" in link:
+                        instagram +=1
+            social["facebook"].append((key, (facebook/totalEmails)*100))
+            social["twitter"].append((key, (twitter/totalEmails)*100)) 
+            social["pinterest"].append((key, (pinterest/totalEmails)*100)) 
+            social["youtube"].append((key, (youtube/totalEmails)*100)) 
+            social["instagram"].append((key, (instagram/totalEmails)*100))        
+
+        
+        data = [onelist]
+        for metric, val in social.items():
+            tempList = [metric]
+            for count in val:
+                tempList.append(count[1])
+            data.append(tempList)
+
+        with open('socialData.csv', 'w', newline='') as fp:
+            a = csv.writer(fp, delimiter=',')
+            a.writerows(data)
+        print (data) 
+
 
     def countEmailsbyBrand(self, tupDict):
         emailString = ""
@@ -92,6 +152,7 @@ def main():
     t = tranformer()
     brandDict = t.matchBrandsToEmails()
     t.countEmailsbyBrand(brandDict)
+    t.emailsSocial(brandDict)
 
     #t.writeToCsv
 

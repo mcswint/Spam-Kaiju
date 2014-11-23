@@ -58,6 +58,7 @@ def fetchEmails(username, password):
         #you can access each part like a dict
         #print ('From', wholeEmail['From'])
         addEmailsToDB(wholeEmail)
+    session.commit()
 
 
 def fetchFromMbox(filename):
@@ -65,8 +66,12 @@ def fetchFromMbox(filename):
     mbox = mailbox.mbox(filename)
     #addEmailsToDB(mbox)
 
+    count = 0
     for message in mbox:
+        count +=1 
+        #print (count)
         addEmailsToDB(message)
+    session.commit()
 
     # for message in mbox:
     #     address = message['From']
@@ -154,7 +159,7 @@ def addEmailsToDB(message):
                 time_sent=time_sent, message_id=message_id, subject_line=subject_line,
                 body_plain = body_plain, body_links = str(all_links), social_links = str(social_links))
     session.add(new_email)
-    session.commit()
+    #session.commit()
 
 
 def main(argv):
