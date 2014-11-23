@@ -47,32 +47,41 @@ class tranformer():
 
     def countEmailsbyBrand(self, tupDict):
         emailString = ""
-        topDict = {}
-        categoryDict = {}
 
+        topDict = {}
+        allCategories = []
+
+        # build category dictionaries from brands
         for key, val in tupDict.items():
             numEmails = len(val[1])
             if numEmails != 0:
+                
                 brandDict = {} 
                 brandDict["name"] = key.brand_name
                 brandDict["size"] = numEmails
-                if key.category in categoryDict:
-                    currentList = categoryDict[key.category]
-                    currentList.append(brandDict)
-                    categoryDict[key.category] = currentList
-                else:
-                    categoryDict[key.category] = [brandDict]
-        
+
+                found = False
+
+                # check allCategories for key.category
+                for category in allCategories:
+                    if category["name"] == key.category:
+                        found = True
+                        associatedBrands = category["children"]
+                        associatedBrands.append(brandDict)
+                        category["children"] = associatedBrands
+
+                # add key.category to allCategories
+                if not found:
+                    categoryDict = {}
+                    categoryDict["name"] = key.category # build a new categoryDict
+                    categoryDict["children"] = [brandDict]
+                    allCategories.append(categoryDict)
+                
         topDict["name"] = "flare"
-        topDict["children"] = categoryDict
+        topDict["children"] = allCategories
 
         emailString += json.dumps(topDict, indent=4, separators=(',', ': '))
         print(emailString)
-        #print (key.brand_name)
-        #print ("num of emails: ", numEmails)
-        #jsonString = json.dumps({'name': 'flare', 'children': [emailString]}, indent=4,
-        #                separators=(',', ': '))
-        #print(jsonString)
 
 def writeToCsv():
     #with csv.writer(open('test.csv', 'w', newLine='') as datafile:
