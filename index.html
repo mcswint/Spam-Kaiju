@@ -1,71 +1,38 @@
-
 <!DOCTYPE html>
-<meta charset="utf-8">
-<style>
-body {
-	text-align: center;
-	font-family: Raleway, helvetica, sans-serif;
-}
-text {
-  font: 10px sans-serif;
-}
-
-</style>
-<body>
-	<h1>Number of Emails Sent by Brand</h1>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css" />
 	<script src="http://d3js.org/d3.v3.min.js"></script>
-	<script>
+</head>
+<body>
+	<!-- header -->
+	<div id="headcontainer" class="hasshadow">
+		<div id="spamkaiju">
+			<h1>Spam</h1><h1 id="second">Kaiju</h1>
+			<a href="index.html" class="nav">Home</a>
+			<a href="results.html" class="nav">Results</a>
+			<a href="https://github.com/mcswint/Spam-Kaiju/" class="nav" target="_blank">Github Repo</a>
+		</div>
+	</div>
+	<div id="otachi">
+	</div>
+	<!-- end header -->
 
-		var diameter = 960,
-			format = d3.format(",d"),
-			color = d3.scale.category20c();
+	<div id="content">
+		<h3>About</h3>
+		<p>For our final project in COMSW3101-1 Python Fall 2014, we made an email scraper to analyze emails that brands send their customers who sign up for their mailing list. This data can be used to compare what types of advertisements brands are sending to their potential customers or analyze the spam that is coming to your mailbox.</p>
+		<p>The purpose of this project was to exercise our comprehension of the material learned in Python by utilizing those concepts in real-life applications such as data mining. In our project, we had two main processes: the first step was to extract data given a database, and the second was determining what to do with that data. In our case, we chose to display different aspects and trends of the data collected.</p>
 
-		var bubble = d3.layout.pack()
-			.sort(null)
-			.size([diameter, diameter])
-			.padding(1.5);
+		<br/>
 
-		var svg = d3.select("body").append("svg")
-			.attr("width", diameter)
-			.attr("height", diameter)
-			.attr("class", "bubble");
+		<h3>In-Depth</h3>
+		<p>List of Shortcomings here</p>
 
-		d3.json("data.json", function(error, root) {
-		  var node = svg.selectAll(".node")
-				.data(bubble.nodes(classes(root))
-				.filter(function(d) { return !d.children; }))
-				.enter().append("g")
-				.attr("class", "node")
-				.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+		<br/>
 
-		  node.append("title")
-				.text(function(d) { return d.className + ": " + format(d.value); });
+		<h3>Sources and Credits</h3>
+		<p>This project is built using Python v3 among other outside libraries. Database management was made possible by <a href="http://www.sqlalchemy.org/">SQLAlchemy</a>. Data displayed via <a href="http://d3js.org/">D3.js</a> and template used is by <a href="http://bl.ocks.org/mbostock/">mbostock</a>. Everything else &copy; Troy Barrett, Mandy Swinton, and Jean Mariano.</p>
 
-		  node.append("circle")
-				.attr("r", function(d) { return d.r; })
-				.style("fill", function(d) { return color(d.packageName); });
-
-		  node.append("text")
-				.attr("dy", ".3em")
-				.style("text-anchor", "middle")
-				.text(function(d) { return d.className.substring(0, d.r / 3); });
-		});
-
-		// Returns a flattened hierarchy containing all leaf nodes under the root.
-		function classes(root) {
-			var classes = [];
-
-			function recurse(name, node) {
-				if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
-				else classes.push({packageName: name, className: node.name, value: node.size});
-			}
-
-			recurse(null, root);
-			return {children: classes};
-		}
-
-		d3.select(self.frameElement).style("height", diameter + "px");
-
-	</script>
+	</div>
 </body>
 </html>
