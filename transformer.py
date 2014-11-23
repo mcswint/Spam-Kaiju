@@ -49,16 +49,22 @@ class tranformer():
         emailString = ""
         topDict = {}
         categoryDict = {}
-        brandDict = {}
 
         for key, val in tupDict.items():
             numEmails = len(val[1])
             if numEmails != 0:
-                brandDict[key.brand_name] = numEmails
+                brandDict = {} 
+                brandDict["name"] = key.brand_name
+                brandDict["size"] = numEmails
+                if key.category in categoryDict:
+                    currentList = categoryDict[key.category]
+                    currentList.append(brandDict)
+                    categoryDict[key.category] = currentList
+                else:
+                    categoryDict[key.category] = [brandDict]
         
-        topDict["name"] = brandDict
-        print(brandDict)
-        input("Enter...")
+        topDict["name"] = "flare"
+        topDict["children"] = categoryDict
 
         emailString += json.dumps(topDict, indent=4, separators=(',', ': '))
         print(emailString)
