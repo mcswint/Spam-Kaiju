@@ -32,8 +32,7 @@ def stringToDateTimeObject(date_string):
     return date_time_object
     
 class timeTransformer():
-   
-  
+
     def getAllEmailDatesInRange(self, start_time, end_time):
        allEmails = session.query(Email)
        emailsInRange = []
@@ -46,10 +45,9 @@ class timeTransformer():
 
 
     def matchBrandsToEmails(self, cleanEmails):
-        print("start")
         brands = session.query(Brand)
-        #print(type(brands))
         tupDict = {}
+
         for brand in brands:
             brandId = brand.id
             associatedEmails = []
@@ -67,9 +65,8 @@ class timeTransformer():
                     else:
                         tupDict[brandName] = 1
         return tupDict
-
-
         # a Dictionary of brands ("brand name" :(list of addressess associated with brand, all emails from all addresses associated with brand)) 
+
 
     def buildJSON(self, tupDict):
         emailString = ""
@@ -90,10 +87,6 @@ class timeTransformer():
         emailString += json.dumps(topDict, indent=4, separators=(',', ': '))
         print(emailString)
 
-def writeToCsv():
-    #with csv.writer(open('test.csv', 'w', newLine='') as datafile:
-    pass
-
 
 def main():
 
@@ -112,7 +105,7 @@ def main():
     brandToNumberDictionary = t.matchBrandsToEmails(cleanEmails)
     
     t.buildJSON(brandToNumberDictionary)
-    #t.writeToCsv
+
 
 if __name__ =='__main__':
     main()

@@ -21,26 +21,49 @@
 	<div id="content">
 		<h2>About</h2>
 		<p>For our final project in COMSW3101-1 Python Fall 2014, we made an email scraper to analyze emails that brands send their customers who sign up for their mailing list. This data can be used to compare what types of advertisements brands are sending to their potential customers or analyze the spam that is coming to your mailbox.</p>
-		<p>The purpose of this project was to exercise our comprehension of the material learned in Python by utilizing those concepts in real-life applications such as data mining. In our project, we had two main processes: the first step was to extract data given a database, and the second was determining what to do with that data. In our case, we chose to display different aspects and trends of the data collected.</p>
+		<p>The purpose of this project was to exercise our comprehension of the material learned in Python by utilizing those concepts in real-life applications such as data mining. Our goal was to make a way to translate an archive file containing thousands of emails into an organized database so that meaningful data and analysis can be extracted from it. In our project, we had two main processes: the first step was to extract data given a database, and the second was determining what to do with that data. In our case, we chose to display different aspects and trends of the data collected.</p>
 
 		<br/>
 
 		<h2>In-Depth</h2>
 		<b>fetch_emails.py</b><br/>
-		Turn email messages from gmail-type format and stores them into a database format so that we are able to manipulate its data easily and conveniently.
+		Turns email messages from gmail-type format and stores them into a database format so that we are able to manipulate its data easily and conveniently.
 			<ul>
 				<li><i>addEmailsToDB</i> - Given an email string, parses the email and creates SQL columns for the properties of the email. Then creates a new entry of the email in the database</li> 
+				<li><i>fetchEmails</i> - Given a username and password, fetches the emails from a gmail account and adds those emails to the database.</li>
+				<li><i>fetchFromMbox</i> - Given a file name, fetches the emails from a mbox file and adds those emails to the database.</li>
+				<li><i>getAddress</i> - Given an email address string, queries the database for the email address, and if not found, adds it to the database and queries it again. Returns the id of the email address.</li>
+		        <li><i>makeBrandDict</i> - Queries the database and creates a dictionary of brand information for easy manipulation. The keys are tuples of brand ids and names, and the values are the emails associated with the brand.</li>
 		        <li><i>matchEmailstoAddresses</i> - Given an email address string, finds and matches it to an existing entry database dictionary. If not matched, adds the email to a list of unmatched emails. Returns the brand id of the match or if not matched returns the index in the list of unmatched emails.</li> 
-
 		    </ul>
+		    
 		<b>parse_image_links.py</b><br/>
+		Parses all the images and links out of a message body.
 			<ul>
-		        <li><i>parse_links</i> - Given a message string, uses regex to extract all links in message</li> 
-		        <li><i>def parse_social_media</i> - Given a list of urls. Returns a sanitized list of only social media links</li>
+		        <li><i>parse_links</i> - Given a message string, uses regex to extract all links in message.</li> 
+		        <li><i>def parse_social_media</i> - Given a list of urls. Returns a sanitized list of only social media links.</li>
+		    </ul>
+
+	    <b>parseBody.py</b><br/>
+	    Walks through each section of the message and returns a plain text string of what is in the message.
+			<ul>
+				<li><u>class parseBody</u></li>
+		        <ul>
+			        <li><i>decode</i> - For each charset in email, try to decode. </li>
+			        <li><i>getBody</i> - Given message, returns the body of the message in text format. If message is multipart, walk through each section to find the text.</li>
+			        <li><i>getcharsets</i> - Get charsets contained in email.</li>
+			        <li><i>convertHTML</i> - Given message, parses the html in it. If message is html type, decodes first, then parses.</li>
+		        </ul>
+		        <li><u>class MyHTMLParser</u></li>
+		        <ul>
+			        <li><i>getAllEmailDatesInRange</i> - Queries database for all emails and extracts time sent. Compares time sent to user defined time and builds list of all emails sent during time specified.</li>
+			        <li><i>matchBrandsToEmails</i> - Used to pair brand name with email addresses. Queries database and builds a list of all associated emails and brands. </li>
+			        <li><i>buildJSON</i> - Provided a dictionary of brands and number of emails sent constructs a useable JSON representation of data</li>
+		        </ul>
 		    </ul>
 
 	    <b>timeTransformer.py</b><br/>
-	    User defines start and end date. Result is a JSON feed of brands and number of emails sent during the specified time
+	    User defines start and end date. Result is a JSON feed of brands and number of emails sent during the specified time.
 		    <ul>
 		        <li><i>timeToDateTimeObject</i> - Given a date/time string, converts to a native python date/Time object
 			        
@@ -52,11 +75,29 @@
 		        </ul>
 		    </ul>
 
-	    <b>transformer.py</b>
-	        <ul>
-		        <li>Queries the database and creates a useable JSON stream of all associated Brands, emails, categories, and number of emails sent</li>
+	    <b>transformer.py</b><br/>
+        Queries the database and creates a useable JSON stream of all associated Brands, emails, categories, and number of emails sent
+        	<ul>
+				<li><u>class parseBody</u></li>
+		        <ul>
+			        <li><i>countEmailsbyBrand</i> - Given a dictionary containing information on brand id, email address and emails, creates a category dictionary of the brands, counts the emails sent by each brand, and returns a json format string containing the number emails sent by brand, organized by brand category.</li>
+			        <li><i>emailsSocial</i> - Given a dictionary containing information on brand id, email address and emails, creates a category dictionary of the brands, counts the number of brands that contain social media links, and outputs that information to a csv file.</li>
+			        <li><i>matchBrandsToEmails</i> - Maps brand id, email addresses, and emails associated with a brand, and returns that information in a dicitonary.</li>
+			    </ul>
 		    </ul>
 
+		<b>dbsetup/setup_db_SA.py</b><br/>
+        Sets up the database of information to be used in the project (a list of brands and their emails). Uses SQLAlchemy to create SQL tables, contained in an engine that stores data in the local directory db file.
+        	<ul>
+		        <li><u>class Brand</u></li>
+				<li><u>class Email_Address</u></li>
+				<li><u>class Email</u></li>
+				<li><u>class Email_Fact_By_Brand</u></li>
+		    </ul>
+		<br/>
+
+		<b>dbsetup/load_brands_SA.py</b><br/>
+        Opens a csv archive of brand information and loads that information into an existing database.
 		<br/>
 
 		<h2>Sources and Credits</h2>
