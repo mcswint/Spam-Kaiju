@@ -2,200 +2,488 @@
     "name": "flare",
     "children": [
         {
-            "size": 18,
-            "name": "Publix"
+            "name": "LOFT",
+            "size": 38
         },
         {
-            "size": 6,
-            "name": "Home Depot"
+            "name": "Cost Plus World Market",
+            "size": 5
         },
         {
-            "size": 6,
-            "name": "Trader Joe's"
+            "name": "Gap",
+            "size": 34
         },
         {
-            "size": 18,
-            "name": "Family Dollar"
+            "name": "Nine West",
+            "size": 33
         },
         {
-            "size": 42,
-            "name": "Walmart"
+            "name": "Family Dollar",
+            "size": 3
         },
         {
-            "size": 6,
-            "name": "Toys'r'us"
+            "name": "West Elm",
+            "size": 14
         },
         {
-            "size": 60,
-            "name": "Pier 1 Imports"
+            "name": "Victoria's Secret",
+            "size": 33
         },
         {
-            "size": 12,
-            "name": "Ace Hardware"
+            "name": "Ethan Allen",
+            "size": 23
         },
         {
-            "size": 18,
-            "name": "Fry's Electronics"
+            "name": "Home Depot",
+            "size": 1
         },
         {
-            "size": 24,
-            "name": "Dicks Sporting Goods"
+            "name": "Walgreens",
+            "size": 3
         },
         {
-            "size": 18,
-            "name": "buybuy BABY"
+            "name": "Meijer",
+            "size": 4
         },
         {
-            "size": 84,
-            "name": "Academy Sports + Outdoors"
+            "name": "Ann Taylor",
+            "size": 40
         },
         {
-            "size": 90,
-            "name": "Kohl's"
+            "name": "Brooks Brothers",
+            "size": 17
         },
         {
-            "size": 42,
-            "name": "Jo-Ann Stores"
+            "name": "Costco",
+            "size": 7
         },
         {
-            "size": 6,
-            "name": "Burlington Coat Factory"
+            "name": "Pottery Barn",
+            "size": 32
         },
         {
-            "size": 18,
-            "name": "Macy's"
+            "name": "Lowe's",
+            "size": 4
         },
         {
-            "size": 12,
-            "name": "JCPenney"
+            "name": "Abercrombie & Fitch",
+            "size": 32
         },
         {
-            "size": 60,
-            "name": "BJ's Wholesale Club"
+            "name": "Cartier",
+            "size": 3
         },
         {
-            "size": 42,
-            "name": "Costco"
+            "name": "Lush",
+            "size": 7
         },
         {
-            "size": 24,
-            "name": "Dollar Tree"
+            "name": "RadioShack",
+            "size": 3
         },
         {
-            "size": 30,
-            "name": "Dillard's"
+            "name": "Jo-Ann Stores",
+            "size": 7
         },
         {
-            "size": 72,
-            "name": "Dollar General"
+            "name": "OfficeMax",
+            "size": 5
         },
         {
-            "size": 18,
-            "name": "TJ Maxx"
+            "name": "Hobby Lobby",
+            "size": 9
         },
         {
-            "size": 12,
-            "name": "Target"
+            "name": "ASOS",
+            "size": 16
         },
         {
-            "size": 12,
-            "name": "HomeGoods"
+            "name": "Crate & Barrel",
+            "size": 22
         },
         {
-            "size": 24,
-            "name": "Famous Footwear"
+            "name": "YOOX",
+            "size": 20
         },
         {
-            "size": 18,
-            "name": "RadioShack"
+            "name": "Tory Burch",
+            "size": 11
         },
         {
-            "size": 18,
-            "name": "Belk"
+            "name": "A|X Armani Exchange",
+            "size": 18
         },
         {
-            "size": 24,
-            "name": "Sports Authority"
+            "name": "Blue Nile",
+            "size": 10
         },
         {
-            "size": 42,
-            "name": "Container Store"
+            "name": "American Apparel",
+            "size": 2
         },
         {
-            "size": 18,
-            "name": "Walgreens"
+            "name": "Alex and Ani",
+            "size": 12
         },
         {
-            "size": 48,
-            "name": "Staples"
+            "name": "J.Crew",
+            "size": 31
         },
         {
-            "size": 24,
-            "name": "Whole Foods"
+            "name": "Club Monaco",
+            "size": 27
         },
         {
-            "size": 30,
-            "name": "OfficeMax"
+            "name": "Sports Authority",
+            "size": 4
         },
         {
-            "size": 54,
-            "name": "Hobby Lobby"
+            "name": "Dollar Tree",
+            "size": 4
         },
         {
-            "size": 12,
-            "name": "Sam's Club"
+            "name": "Topshop",
+            "size": 9
         },
         {
-            "size": 42,
-            "name": "Shopko"
+            "name": "French Connection",
+            "size": 9
         },
         {
-            "size": 30,
-            "name": "Cost Plus World Market"
+            "name": "Bed Bath & Beyond",
+            "size": 7
         },
         {
-            "size": 24,
-            "name": "Lowe's"
+            "name": "Steve Madden",
+            "size": 21
         },
         {
-            "size": 6,
-            "name": "Cabela's"
+            "name": "H&M",
+            "size": 21
         },
         {
-            "size": 60,
-            "name": "hhgregg"
+            "name": "Stuart Weitzman",
+            "size": 18
         },
         {
-            "size": 18,
-            "name": "Office Depot"
+            "name": "Burlington Coat Factory",
+            "size": 1
         },
         {
-            "size": 24,
-            "name": "Meijer"
+            "name": "Shopko",
+            "size": 7
         },
         {
-            "size": 18,
-            "name": "Marshall's"
+            "name": "Cole Haan",
+            "size": 15
         },
         {
-            "size": 18,
-            "name": "Ross"
+            "name": "HomeGoods",
+            "size": 2
         },
         {
-            "size": 42,
-            "name": "Bed Bath & Beyond"
+            "name": "Dillard's",
+            "size": 5
         },
         {
-            "size": 18,
-            "name": "REI"
+            "name": "Ford",
+            "size": 5
         },
         {
-            "size": 18,
-            "name": " eliminate (erroneous addition)"
+            "name": "Fry's Electronics",
+            "size": 3
         },
         {
-            "size": 54,
-            "name": "Petco Animal Supplies"
+            "name": "Ulta",
+            "size": 7
+        },
+        {
+            "name": "Ace Hardware",
+            "size": 2
+        },
+        {
+            "name": "Uniqlo",
+            "size": 21
+        },
+        {
+            "name": "Tourneau",
+            "size": 2
+        },
+        {
+            "name": "Macy's",
+            "size": 3
+        },
+        {
+            "name": "BCBG Max Azria",
+            "size": 23
+        },
+        {
+            "name": "Swarovski",
+            "size": 11
+        },
+        {
+            "name": "Tumi",
+            "size": 9
+        },
+        {
+            "name": "Dollar General",
+            "size": 12
+        },
+        {
+            "name": "Trader Joe's",
+            "size": 1
+        },
+        {
+            "name": "Anthropologie",
+            "size": 20
+        },
+        {
+            "name": "Forever 21",
+            "size": 46
+        },
+        {
+            "name": "Publix",
+            "size": 3
+        },
+        {
+            "name": "Petco Animal Supplies",
+            "size": 9
+        },
+        {
+            "name": "Diesel",
+            "size": 2
+        },
+        {
+            "name": "Belk",
+            "size": 3
+        },
+        {
+            "name": "Tommy Hilfiger",
+            "size": 13
+        },
+        {
+            "name": "Walmart",
+            "size": 7
+        },
+        {
+            "name": "Vince Camuto",
+            "size": 26
+        },
+        {
+            "name": "Lululemon Athletica",
+            "size": 4
+        },
+        {
+            "name": "Urban Outfitters",
+            "size": 10
+        },
+        {
+            "name": "Aeropostale",
+            "size": 26
+        },
+        {
+            "name": "Dicks Sporting Goods",
+            "size": 4
+        },
+        {
+            "name": "American Eagle Outfitters",
+            "size": 38
+        },
+        {
+            "name": "Swatch",
+            "size": 7
+        },
+        {
+            "name": "Pier 1 Imports",
+            "size": 41
+        },
+        {
+            "name": "Guess",
+            "size": 39
+        },
+        {
+            "name": "Lucky Brand",
+            "size": 27
+        },
+        {
+            "name": "Whole Foods",
+            "size": 4
+        },
+        {
+            "name": "L'OCCITANE en Provence",
+            "size": 3
+        },
+        {
+            "name": "Free People",
+            "size": 14
+        },
+        {
+            "name": "True Religion",
+            "size": 14
+        },
+        {
+            "name": "Toys'r'us",
+            "size": 1
+        },
+        {
+            "name": "Office Depot",
+            "size": 3
+        },
+        {
+            "name": "Chico's",
+            "size": 2
+        },
+        {
+            "name": "Fossil",
+            "size": 11
+        },
+        {
+            "name": "Cabela's",
+            "size": 1
+        },
+        {
+            "name": "Lacoste",
+            "size": 9
+        },
+        {
+            "name": "Bath & Body Works",
+            "size": 45
+        },
+        {
+            "name": "JCPenney",
+            "size": 2
+        },
+        {
+            "name": "Famous Footwear",
+            "size": 4
+        },
+        {
+            "name": " eliminate (erroneous addition)",
+            "size": 3
+        },
+        {
+            "name": "Container Store",
+            "size": 7
+        },
+        {
+            "name": "Restoration Hardware",
+            "size": 38
+        },
+        {
+            "name": "Target",
+            "size": 2
+        },
+        {
+            "name": "hhgregg",
+            "size": 10
+        },
+        {
+            "name": "Kate Spade",
+            "size": 15
+        },
+        {
+            "name": "buybuy BABY",
+            "size": 3
+        },
+        {
+            "name": "Kohl's",
+            "size": 15
+        },
+        {
+            "name": "Sephora",
+            "size": 13
+        },
+        {
+            "name": "Gymboree",
+            "size": 20
+        },
+        {
+            "name": "Fresh",
+            "size": 2
+        },
+        {
+            "name": "CB2",
+            "size": 17
+        },
+        {
+            "name": "Ross",
+            "size": 3
+        },
+        {
+            "name": "Staples",
+            "size": 8
+        },
+        {
+            "name": "Academy Sports + Outdoors",
+            "size": 14
+        },
+        {
+            "name": "Express",
+            "size": 27
+        },
+        {
+            "name": "Shopbop",
+            "size": 27
+        },
+        {
+            "name": "Williams-Sonoma",
+            "size": 37
+        },
+        {
+            "name": "Athleta",
+            "size": 9
+        },
+        {
+            "name": "Ralph Lauren",
+            "size": 18
+        },
+        {
+            "name": "Sam's Club",
+            "size": 2
+        },
+        {
+            "name": "Coach",
+            "size": 4
+        },
+        {
+            "name": "REI",
+            "size": 3
+        },
+        {
+            "name": "Talbots",
+            "size": 22
+        },
+        {
+            "name": "Nike",
+            "size": 2
+        },
+        {
+            "name": "Marshall's",
+            "size": 3
+        },
+        {
+            "name": "TJ Maxx",
+            "size": 3
+        },
+        {
+            "name": "Juicy Couture ",
+            "size": 1
+        },
+        {
+            "name": "Zales",
+            "size": 23
+        },
+        {
+            "name": "BJ's Wholesale Club",
+            "size": 10
+        },
+        {
+            "name": "Kay Jewelers",
+            "size": 19
+        },
+        {
+            "name": "Banana Republic",
+            "size": 37
         }
     ]
 }
