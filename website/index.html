@@ -36,7 +36,7 @@
 		        <li><i>makeBrandDict</i> - Queries the database and creates a dictionary of brand information for easy manipulation. The keys are tuples of brand ids and names, and the values are the emails associated with the brand.</li>
 		        <li><i>matchEmailstoAddresses</i> - Given an email address string, finds and matches it to an existing entry database dictionary. If not matched, adds the email to a list of unmatched emails. Returns the brand id of the match or if not matched returns the index in the list of unmatched emails.</li> 
 		    </ul>
-		    
+
 		<b>parse_image_links.py</b><br/>
 		Parses all the images and links out of a message body.
 			<ul>
@@ -94,14 +94,13 @@
 				<li><u>class Email</u></li>
 				<li><u>class Email_Fact_By_Brand</u></li>
 		    </ul>
-		<br/>
 
 		<b>dbsetup/load_brands_SA.py</b><br/>
         Opens a csv archive of brand information and loads that information into an existing database.
-		<br/>
+		<br/><br/>
 
 		<h2>Sources and Credits</h2>
-		<p>This project is built using Python v3 among other outside libraries. Database management was made possible by <a href="http://www.sqlalchemy.org/">SQLAlchemy</a>. Data displayed via <a href="http://d3js.org/">D3.js</a> and template used is by <a href="http://bl.ocks.org/mbostock/">mbostock</a>. Everything else &copy; Troy Barrett, Mandy Swinton, and Jean Mariano.</p>
+		<p>This project is built using Python v3 among other outside modules including json, mbox, time, and datetime. Database management was made possible by <a href="http://www.sqlalchemy.org/">SQLAlchemy</a>. Data displayed via <a href="http://d3js.org/">D3.js</a> and templates used are by <a href="http://bl.ocks.org/mbostock/">mbostock</a>. Everything else &copy; Troy Barrett, Mandy Swinton, and Jean Mariano.</p>
 
 	</div>
 </body>
