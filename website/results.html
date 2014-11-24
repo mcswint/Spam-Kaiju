@@ -161,7 +161,7 @@
 		      var legend = d3.select("div#socialdonut").append("svg")
 		          .attr("class", "legend")
 		          .attr("width", radius * 2)
-		          .attr("height", radius * 2)
+		          .attr("height", radius * 3)
 		        .selectAll("g")
 		          .data(color.domain().slice().reverse())
 		        .enter().append("g")
@@ -183,7 +183,7 @@
 		        .enter().append("svg")
 		          .attr("class", "pie")
 		          .attr("width", radius * 2)
-		          .attr("height", radius * 2)
+		          .attr("height", radius * 3)
 		        .append("g")
 		          .attr("transform", "translate(" + radius + "," + radius + ")");
 
@@ -217,7 +217,7 @@
 			var y = d3.scale.linear()
 			    .range([height, 0]);
 
-			var color = d3.scale.category10()
+			var color = d3.scale.category20()
 			    // .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
 			var xAxis = d3.svg.axis()
