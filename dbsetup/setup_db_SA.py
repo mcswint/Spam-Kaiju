@@ -17,12 +17,14 @@ class Brand(Base):
     brand_website_clean = Column(String(250))
     category = Column(String(250))
  
+
 class Email_Address(Base):
 	__tablename__ = 'email_address'
 
 	id = Column(Integer, primary_key=True)
 	email_address = Column(String(250), nullable = False)
 	brand_id = Column(Integer, ForeignKey('brand.id'))
+
 
 #not using
 class Brand_To_Email_Address(Base):
@@ -32,6 +34,7 @@ class Brand_To_Email_Address(Base):
     id = Column(Integer, primary_key=True)
     brand_id = Column(Integer, ForeignKey('brand.id'))
     address_id = Column(Integer, ForeignKey('email_address.id'))    
+
 
 class Email(Base):
 	__tablename__ = 'email'
@@ -50,6 +53,7 @@ class Email(Base):
 	body_links = Column(Text)
 	social_links = Column(Text)
 	body_images = Column(Text)
+
 
 class Email_Fact_By_Brand(Base):
 	__tablename__ = 'email_fact_by_brand'

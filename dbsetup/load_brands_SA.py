@@ -21,12 +21,9 @@ with open('brands_websites_cat.csv') as datafile:
 		cleanWeb = None
 		count = website.count(".")
 		pieces = website.split(".")
+
 		if (count == 0):
-			#print (website)
 			continue
-		#if "www" not in pieces[0] and "http" not in pieces[0]:
-			#print(pieces[0])
-		#	cleanWeb = pieces[0]
 		else:
 			for idx, p in enumerate(pieces):
 					if "com" in p or "net" == p or "co" == p or "org" == p:
@@ -39,13 +36,6 @@ with open('brands_websites_cat.csv') as datafile:
 				else:	
 					cleanWeb = pieces[1]
 
-		#print (cleanWeb)
-		#input("help")
 		new_brand = Brand(brand_name=row[0], brand_website=website, brand_website_clean = cleanWeb, category=row[2])	
 		session.add(new_brand)
 	session.commit()
-
-# for testing
-#brand = session.query(Brand)
-#for b in brand:
-#	print(b.id, b.brand_name, b.brand_website)

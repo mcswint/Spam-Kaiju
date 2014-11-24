@@ -6,16 +6,15 @@ class MyHTMLParser(HTMLParser):
     def __init__(self): 
         super().__init__()
         self.datastring = ""
+
     def handle_data(self, data):
         self.datastring += data
         
-
     def getDatastring(self):
         return self.datastring
 
-#
-class parseBody():
 
+class parseBody():
     def getcharsets(self, msg):
         #get charsets contained in email
         charsets = set({})
@@ -25,7 +24,7 @@ class parseBody():
         return charsets
 
     def decode(self, msg, body):
-        #for each charset in email, try to decodes
+        #for each charset in email, try to decode
         for charset in self.getcharsets(msg):
             try:
                 body = body.decode(charset)
@@ -38,10 +37,10 @@ class parseBody():
     def convertHTML(self, msg):
         #if msg is html type, decode first, then parse html
         body = msg.get_payload(decode=True)
+        
         if (body != None):
             body = self.decode(msg, body)
             parser = MyHTMLParser()
-            #print (type(body))
             parser.feed(str(body))
             parsed = parser.getDatastring()
             return parsed
@@ -81,5 +80,3 @@ class parseBody():
 
         elif msg.get_content_type() == 'text/html':
             return self.convertHTML(msg)
-
-

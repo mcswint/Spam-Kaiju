@@ -23,7 +23,6 @@ class tranformer():
     
     def matchBrandsToEmails(self):
         brands = session.query(Brand)
-        #print(type(brands))
         tupDict = {}
 
         for brand in brands:
@@ -57,8 +56,6 @@ class tranformer():
                 else:
                     allCat[key.category] = val[1]
 
-
-        #print(allCat)
         onelist = ["category"]
         social = {"facebook" : [], "twitter":[], "pinterest":[], "youtube":[], "instagram":[]}
         for key, val in allCat.items():
@@ -71,9 +68,7 @@ class tranformer():
             instagram = 0
             for v in val:
                 totalEmails += 1
-               # print(v.social_links)
                 socailLinks = v.social_links.split(",")
-                #input("dfds")
                 for link in socailLinks:
                     if "facebook" in link:
                         facebook += 1
@@ -143,18 +138,12 @@ class tranformer():
         emailString += json.dumps(topDict, indent=4, separators=(',', ': '))
         print(emailString)
 
-def writeToCsv():
-    #with csv.writer(open('test.csv', 'w', newLine='') as datafile:
-    pass
-
 
 def main():
     t = tranformer()
     brandDict = t.matchBrandsToEmails()
     t.countEmailsbyBrand(brandDict)
     t.emailsSocial(brandDict)
-
-    #t.writeToCsv
 
 if __name__ =='__main__':
     main()
